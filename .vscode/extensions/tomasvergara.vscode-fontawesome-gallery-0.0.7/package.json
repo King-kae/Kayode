@@ -1,0 +1,167 @@
+{
+	"name": "vscode-fontawesome-gallery",
+	"displayName": "Font Awesome Gallery",
+	"description": "VSCode Extension Sidebar Panel with a gallery view of FontAwesome's 5/6 free icons.",
+	"version": "0.0.7",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TOMIVERGARA/vscode-fontawesome-gallery"
+	},
+	"icon": "extension_logo.png",
+	"publisher": "tomasvergara",
+	"author": {
+		"name": "Tomas Vergara"
+	},
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"categories": [
+		"Visualization",
+		"Other"
+	],
+	"activationEvents": [
+		"onView:vscode-fontawesome-gallery-sidebar",
+		"onCommand:vscode-fontawesome-gallery.refresh",
+		"onCommand:vscode-fontawesome-gallery.code-type-unicode",
+		"onCommand:vscode-fontawesome-gallery.code-type-classname",
+		"onCommand:vscode-fontawesome-gallery.toggle-grid-type",
+		"onCommand:vscode-fontawesome-gallery.toggle-grid-type"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "vscode-fontawesome-gallery-sidebar",
+					"title": "Font Awesome Gallery",
+					"icon": "media/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"vscode-fontawesome-gallery-sidebar": [
+				{
+					"type": "webview",
+					"id": "vscode-fontawesome-gallery-sidebar",
+					"name": "Font Awesome Gallery",
+					"icon": "media/icon.svg",
+					"contextualTitle": "Font Awesome Gallery"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "vscode-fontawesome-gallery.refresh",
+				"category": "Font Awesome Gallery",
+				"title": "Refresh"
+			},
+			{
+				"command": "vscode-fontawesome-gallery.code-type-unicode",
+				"category": "Font Awesome Gallery",
+				"title": "Set Icon labels to Unicode"
+			},
+			{
+				"command": "vscode-fontawesome-gallery.code-type-classname",
+				"category": "Font Awesome Gallery",
+				"title": "Set Icon labels to Class Name"
+			},
+			{
+				"command": "vscode-fontawesome-gallery.toggle-grid-type",
+				"category": "Font Awesome Gallery",
+				"title": "Toggle Grid Type"
+			},
+			{
+				"command": "vscode-fontawesome-gallery.switch-version-5",
+				"category": "Font Awesome Gallery",
+				"title": "Use FA v5"
+			},
+			{
+				"command": "vscode-fontawesome-gallery.switch-version-6",
+				"category": "Font Awesome Gallery",
+				"title": "Use FA v6"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "vscode-fontawesome-gallery.switch-version-5",
+					"when": "view == vscode-fontawesome-gallery-sidebar",
+					"group": "a@1"
+				},
+				{
+					"command": "vscode-fontawesome-gallery.switch-version-6",
+					"when": "view == vscode-fontawesome-gallery-sidebar",
+					"group": "a@2"
+				},
+				{
+					"command": "vscode-fontawesome-gallery.code-type-classname",
+					"when": "view == vscode-fontawesome-gallery-sidebar",
+					"group": "b@1"
+				},
+				{
+					"command": "vscode-fontawesome-gallery.code-type-unicode",
+					"when": "view == vscode-fontawesome-gallery-sidebar",
+					"group": "b@2"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "rollup -c && webpack --mode production",
+		"watch": "concurrently \"rollup -c -w\" \"webpack --watch\"",
+		"package": "rollup -c  && webpack --mode production --devtool hidden-source-map",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "npm run test-compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^17.1.0",
+		"@rollup/plugin-json": "^4.1.0",
+		"@rollup/plugin-node-resolve": "^11.2.0",
+		"@rollup/plugin-typescript": "^8.2.0",
+		"@tsconfig/svelte": "^1.0.10",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.20.5",
+		"@types/vscode": "^1.54.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"autoprefixer": "^10.2.5",
+		"concurrently": "^6.0.0",
+		"eslint": "^7.19.0",
+		"figlet": "^1.5.0",
+		"glob": "^7.1.6",
+		"minimist": "^1.2.5",
+		"mocha": "^8.2.1",
+		"postcss": "^8.2.8",
+		"rollup": "^2.3.4",
+		"rollup-plugin-svelte": "^6.0.0",
+		"rollup-plugin-terser": "^7.0.2",
+		"svelte": "^3.35.0",
+		"svelte-check": "^1.2.5",
+		"svelte-preprocess": "^4.6.9",
+		"tailwindcss": "^2.0.3",
+		"ts-loader": "^8.0.14",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0",
+		"webpack": "^5.19.0",
+		"webpack-cli": "^4.4.0"
+	},
+	"dependencies": {
+		"deep-equal": "^2.0.5",
+		"svelte-clipboard": "^0.0.2"
+	},
+	"__metadata": {
+		"id": "85f3cc8b-897e-48b7-b279-65cf051d198f",
+		"publisherId": "612094e8-3ffc-4921-a879-e23f23ad693a",
+		"publisherDisplayName": "tomasvergara",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1691321061139,
+		"preRelease": false
+	}
+}

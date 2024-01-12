@@ -1,0 +1,14 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Kayode Raimi
+	email = kayode.raimi123@gmail.com
+[core]
+	editor = \"C:\\Users\\Kayode\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[init]
+	defaultBranch = main
+[alias]
+	st = status
